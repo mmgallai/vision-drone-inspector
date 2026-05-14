@@ -1,12 +1,8 @@
 # vision-drone-inspector
 
-> Autonomous simulated UAV inspection pipeline. A ROS 2 + Gazebo drone takes a natural-language target name (text, voice, GUI, or LLM), searches an unknown room with **SAM 3** open-vocabulary segmentation, localizes the target with **bearing-only triangulation** across multi-view detections, orbits it twice at two altitudes, and produces four 3D outputs — **Depth Anything 3** colored point cloud, Open3D Poisson mesh, and full + pruned 3D Gaussian Splatting reconstructions via splatfacto.
+> Autonomous simulated UAV inspection pipeline. A ROS 2 + Gazebo drone takes a natural-language target name (text, voice, GUI, or LLM), searches an unknown room with **SAM 3** open-vocabulary segmentation, localizes the target with **bearing-only triangulation** across multi-view detections, orbits it twice at two altitudes, and produces four 3D outputs  **Depth Anything 3** colored point cloud, Open3D Poisson mesh, and full + pruned 3D Gaussian Splatting reconstructions via splatfacto.
 
-No fiducial markers. No target-position prior. No SLAM (simulator pose is used for vehicle self-localization in this study). The whole loop — discovery, identification, orbit, reconstruction — runs in approximately 20 minutes per target on an 8 GB consumer GPU.
-
-<p align="center">
-  <img src="docs/figures/live_view.png" width="85%" alt="Live operator view during ORBIT_HIGH. The drone is locked on a relocated potted plant; the cyan box is the OpenCV tracker. Visible distractors: hydrant, bench, trash bin, mailbox, traffic cone." />
-</p>
+No fiducial markers. No target-position prior. No SLAM (simulator pose is used for vehicle self-localization in this study). The whole loop discovery, identification, orbit, reconstruction, runs in approximately 20 minutes per target on an 8 GB consumer GPU.
 
 ## What it does
 
