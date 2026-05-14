@@ -1,0 +1,39 @@
+# ── ROS 2 colcon build artifacts ──────────────────────────────────────────────
+build/
+install/
+log/
+
+# ── Python ────────────────────────────────────────────────────────────────────
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+
+# ── Mission output (captured images, trained models, big PLYs) ────────────────
+recon_output/
+recon_close/
+mission_output/
+nerfstudio_out/
+
+# ── LaTeX build artifacts (keep .tex and .pdf, drop the rest) ─────────────────
+report/*.aux
+report/*.log
+report/*.out
+report/*.toc
+report/*.synctex.gz
+report/*.fls
+report/*.fdb_latexmk
+report/*.bbl
+report/*.blg
+
+# ── Local secrets and machine-specific config ─────────────────────────────────
+docker/.env
+*.env
+.env
+
+# ── OS / editor noise ─────────────────────────────────────────────────────────
+.DS_Store
+Thumbs.db
+*.swp
+.idea/
+.vscode/

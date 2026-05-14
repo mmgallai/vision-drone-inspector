@@ -1,0 +1,79 @@
+---
+# Clock
+- ros_topic_name: /clock
+  gz_topic_name: /clock
+  ros_type_name: rosgraph_msgs/msg/Clock
+  gz_type_name: gz.msgs.Clock
+  direction: GZ_TO_ROS
+
+# RGB camera image
+- ros_topic_name: /drone/camera/image_raw
+  gz_topic_name: /world/recon_world/model/x3/link/base_link/sensor/camera/image
+  ros_type_name: sensor_msgs/msg/Image
+  gz_type_name: gz.msgs.Image
+  direction: GZ_TO_ROS
+
+# RGB camera info
+- ros_topic_name: /drone/camera/camera_info
+  gz_topic_name: /world/recon_world/model/x3/link/base_link/sensor/camera/camera_info
+  ros_type_name: sensor_msgs/msg/CameraInfo
+  gz_type_name: gz.msgs.CameraInfo
+  direction: GZ_TO_ROS
+
+# Depth camera image
+- ros_topic_name: /drone/depth_camera/image_raw
+  gz_topic_name: /world/recon_world/model/x3/link/base_link/sensor/depth_camera/depth_image
+  ros_type_name: sensor_msgs/msg/Image
+  gz_type_name: gz.msgs.Image
+  direction: GZ_TO_ROS
+
+# Depth camera info
+- ros_topic_name: /drone/depth_camera/camera_info
+  gz_topic_name: /world/recon_world/model/x3/link/base_link/sensor/depth_camera/camera_info
+  ros_type_name: sensor_msgs/msg/CameraInfo
+  gz_type_name: gz.msgs.CameraInfo
+  direction: GZ_TO_ROS
+
+# LiDAR point cloud
+- ros_topic_name: /drone/lidar/points
+  gz_topic_name: /world/recon_world/model/x3/link/base_link/sensor/lidar/scan/points
+  ros_type_name: sensor_msgs/msg/PointCloud2
+  gz_type_name: gz.msgs.PointCloudPacked
+  direction: GZ_TO_ROS
+
+# LiDAR laser scan
+- ros_topic_name: /drone/lidar/scan
+  gz_topic_name: /world/recon_world/model/x3/link/base_link/sensor/lidar/scan
+  ros_type_name: sensor_msgs/msg/LaserScan
+  gz_type_name: gz.msgs.LaserScan
+  direction: GZ_TO_ROS
+
+# IMU
+- ros_topic_name: /drone/imu
+  gz_topic_name: /world/recon_world/model/x3/link/base_link/sensor/imu/imu
+  ros_type_name: sensor_msgs/msg/Imu
+  gz_type_name: gz.msgs.IMU
+  direction: GZ_TO_ROS
+
+# NOTE: The set_pose service bridge can NOT be specified in this YAML file
+# (parameter_bridge's YAML parser only supports topic bridges; service
+# bridges have to be passed as positional CLI arguments). It is wired up
+# in launch/scene1.launch.py via the parameter_bridge `arguments=` list.
+
+# Velocity command (ROS → GZ) — used by Tier 1 velocity-kinematic mode.
+# In kinematic mode (default) nothing publishes here.
+- ros_topic_name: /drone/cmd_vel
+  gz_topic_name: /model/x3/cmd_vel
+  ros_type_name: geometry_msgs/msg/Twist
+  gz_type_name: gz.msgs.Twist
+  direction: ROS_TO_GZ
+
+# Drone model pose (GZ → ROS) — used by Tier 1 velocity-kinematic mode
+# as feedback for the closed-loop position controller. Comes from the
+# PosePublisher plugin in the SDF.
+- ros_topic_name: /drone/pose_actual
+  gz_topic_name: /model/x3/pose
+  ros_type_name: geometry_msgs/msg/Pose
+  gz_type_name: gz.msgs.Pose
+  direction: GZ_TO_ROS
+
